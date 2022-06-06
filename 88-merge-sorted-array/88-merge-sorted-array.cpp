@@ -14,9 +14,13 @@ public:
         }
         while (i>=0) {
             nums1[index--] = nums1[i--];
+            i--;
+            index--;
         }
         while (j>=0) {
-            nums1[index--] = nums2[j--];
+            nums1[index] = nums2[j];
+            j--;
+            index--;
         }
     }
 };
