@@ -13,7 +13,7 @@ public:
             index--;
         }
         while (i>=0) {
-            nums1[index--] = nums1[i--];
+            nums1[index] = nums1[i];
             i--;
             index--;
         }
