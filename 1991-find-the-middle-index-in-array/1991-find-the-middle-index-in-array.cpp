@@ -1,16 +1,13 @@
 class Solution {
 public:
     int findMiddleIndex(vector<int>& nums) {
-        int sum_all=0, sum_till_index=0;
-        for (auto num:nums) {
-            sum_all += num;
+        int n = nums.size();
+        vector<int> preSum(n+1, 0);
+        for (int i=0; i<n; i++) {
+            preSum[i+1] = preSum[i] + nums[i];
         }
-        for (int i=0; i<nums.size(); i++) {
-            if (i != 0) {
-                sum_till_index += nums[i-1];
-            }
-            bool condition = (sum_all - (sum_till_index + nums[i])) == sum_till_index;
-            if (condition) {
+        for (int i=0; i<n; i++) {
+            if (preSum[i] == preSum[n] - preSum[i+1]) {
                 return i;
             }
         }
